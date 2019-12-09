@@ -8,7 +8,7 @@ public class CensusAnalyserTest {
 
     private static final String INDIA_CENSUS_CSV_FILE_PATH = "./src/test/resources/IndiaStateCensusData.csv";
     private static final String WRONG_CSV_FILE_PATH = "./src/main/resources/IndiaStateCensusData.csv";
-
+    private static final String INDIA_STATE_CODE="/home/admin165/Downloads/CensusAnalyser(2)/CensusAnalyser/src/test/resources/IndiaStateCode.csv";
     @Test
     public void givenIndianCensusCSVFileReturnsCorrectRecords() {
         try {
@@ -28,5 +28,17 @@ public class CensusAnalyserTest {
         } catch (CensusAnalyserException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM,e.type);
         }
+    }
+
+    @Test
+    public void giveIndianSateCsv_shouldReturnExactCount()  {
+        CensusAnalyser censusAnalyser=new CensusAnalyser();
+        try {
+          int numberStateCode = censusAnalyser.loadIndiaStateCode( INDIA_STATE_CODE);
+            Assert.assertEquals("37",numberStateCode);
+        } catch (CensusAnalyserException e) {
+            e.printStackTrace();
+        }
+
     }
 }
