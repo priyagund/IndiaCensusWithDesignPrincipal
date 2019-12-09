@@ -38,7 +38,7 @@ public class CensusAnalyserTest {
         CensusAnalyser censusAnalyser=new CensusAnalyser();
         try {
           int numberStateCode = censusAnalyser.loadIndiaStateCode( INDIA_STATE_CODE);
-            Assert.assertEquals("37",numberStateCode);
+            Assert.assertEquals(37,numberStateCode);
         } catch (CensusAnalyserException e) {
             e.printStackTrace();
         }
@@ -46,17 +46,18 @@ public class CensusAnalyserTest {
     }
 
     @Test
-    public void givenIndianStateCensus_whenSortedOnState_shouldeReturnResult()
-    {
+    public void givenIndianStateCensus_whenSortedOnState_shouldeReturnResult()  {
         CensusAnalyser censusAnalyser=new CensusAnalyser();
-        String sortedCensusData= null;
         try {
-            sortedCensusData = censusAnalyser.getStateWiseSortedCensusData(INDIA_CENSUS_CSV_FILE_PATH);
+            censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
+            String sortedCensusData = censusAnalyser.getStateWiseSortedCensusData();
             IndiaCensusCSV[] censusCSV=new Gson().fromJson(sortedCensusData,IndiaCensusCSV[].class);
             Assert.assertEquals("Andhra Pradesh",censusCSV[0].state);
         } catch (CensusAnalyserException e) {
             e.printStackTrace();
         }
 
+        }
+
     }
-}
+
