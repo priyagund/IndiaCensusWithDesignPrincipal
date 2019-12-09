@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="censusanalyser.CensusAnalyserTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2019-12-09T06:25:52" hostname="admin165-desktop" time="0.054">
+<testsuite name="censusanalyser.CensusAnalyserTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2019-12-09T06:48:09" hostname="admin165-desktop" time="0.056">
   <properties/>
-  <testcase name="giveIndianSateCsv_shouldReturnExactCount" classname="censusanalyser.CensusAnalyserTest" time="0.054">
+  <testcase name="giveIndianSateCsv_shouldReturnExactCount" classname="censusanalyser.CensusAnalyserTest" time="0.056">
     <failure message="java.lang.RuntimeException: Error capturing CSV header!" type="java.lang.RuntimeException">java.lang.RuntimeException: Error capturing CSV header!
 	at com.opencsv.bean.CsvToBean.prepareToReadInput(CsvToBean.java:468)
 	at com.opencsv.bean.CsvToBean.iterator(CsvToBean.java:487)
-	at censusanalyser.CensusAnalyser.loadIndiaStateCode(CensusAnalyser.java:41)
-	at censusanalyser.CensusAnalyserTest.giveIndianSateCsv_shouldReturnExactCount(CensusAnalyserTest.java:38)
+	at censusanalyser.CensusAnalyser.getCSVFileIterator(CensusAnalyser.java:50)
+	at censusanalyser.CensusAnalyser.loadIndiaStateCode(CensusAnalyser.java:31)
+	at censusanalyser.CensusAnalyserTest.giveIndianSateCsv_shouldReturnExactCount(CensusAnalyserTest.java:37)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -57,7 +58,7 @@
 Caused by: com.opencsv.exceptions.CsvRequiredFieldEmptyException: Header is missing required fields [STATENAME]
 	at com.opencsv.bean.HeaderColumnNameMappingStrategy.captureHeader(HeaderColumnNameMappingStrategy.java:126)
 	at com.opencsv.bean.CsvToBean.prepareToReadInput(CsvToBean.java:466)
-	... 50 more
+	... 51 more
 </failure>
   </testcase>
   <system-out><![CDATA[]]></system-out>
