@@ -72,6 +72,16 @@ public class CensusAnalyserTest {
         }
     }
 
+    @Test
+    public void givenIndiaStateCensusData_withIncorrectDelimiter_shouldThrowException()
+    {
+        CensusAnalyser censusAnalyser=new CensusAnalyser();
+        try {
+            censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
+        } catch (CensusAnalyserException e) {
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.DELIMETER_INCORRECT,e.type);
+        }
 
+    }
 }
 
