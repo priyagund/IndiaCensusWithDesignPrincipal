@@ -42,6 +42,7 @@ public class CensusAnalyser {
 
     }
 
+
     public int loadIndiaStateCode(String csvDataFilePath) throws CensusAnalyserException {
         try (Reader reader = Files.newBufferedReader(Paths.get(csvDataFilePath));)
         {
@@ -56,14 +57,16 @@ public class CensusAnalyser {
         }
     }
 
+
     private <E> int getCount(Iterator<E>iterator){
         Iterable<E>csvIterable=()->iterator;
         int numOfEntries = (int) StreamSupport.stream(csvIterable.spliterator(), false).count();
         return numOfEntries;
     }
 
+
    public String getStateWiseSortedCensusData() throws CensusAnalyserException {
-       if(censusList==null || censusList.size()==0){
+       if(censusList == null || censusList.size()==0){
            throw new CensusAnalyserException("No such Data",CensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
        }
        Comparator<IndiaCensusDAO>censusComparator=Comparator.comparing(census->census.state);
@@ -71,6 +74,7 @@ public class CensusAnalyser {
        String sortedStateCensusJson=new Gson().toJson(censusList);
        return sortedStateCensusJson;
     }
+
 
     private void sort(Comparator<IndiaCensusDAO> censusComparator){
         for(int i=0;i<censusList.size()-1;i++){
@@ -84,4 +88,7 @@ public class CensusAnalyser {
             }
         }
     }
+
+
+
 }
