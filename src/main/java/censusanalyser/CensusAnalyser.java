@@ -71,7 +71,7 @@ public class CensusAnalyser {
        if(censusList == null || censusList.size()==0){
            throw new CensusAnalyserException("No such Data",CensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
        }
-       Comparator<IndiaCensusDAO> censusComparator = Comparator.comparing(census -> census.state);
+
        this.sort(this.sortByField(field));
        String sortedStateCensusJson=new Gson().toJson(censusList);
        return sortedStateCensusJson;
