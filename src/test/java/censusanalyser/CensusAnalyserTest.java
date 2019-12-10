@@ -79,9 +79,20 @@ public class CensusAnalyserTest {
         try {
             censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
         } catch (CensusAnalyserException e) {
-            Assert.assertEquals(CensusAnalyserException.ExceptionType.DELIMETER_INCORRECT,e.type);
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.SOME_OTHER_ERROR_INFILE,e.type);
         }
 
+    }
+
+    @Test
+    public void givenIndiaStateCensusData_withIncorrectHeader_shouldThrowException()
+    {
+        CensusAnalyser censusAnalyser=new CensusAnalyser();
+        try {
+            censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
+        } catch (CensusAnalyserException e) {
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.SOME_OTHER_ERROR_INFILE,e.type);
+        }
     }
 }
 
