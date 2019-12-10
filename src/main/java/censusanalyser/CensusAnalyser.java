@@ -67,12 +67,12 @@ public class CensusAnalyser {
     }
 
 
-   public String getStateWiseSortedCensusData() throws CensusAnalyserException {
+   public String getStateWiseSortedCensusData(String field) throws CensusAnalyserException {
        if(censusList == null || censusList.size()==0){
            throw new CensusAnalyserException("No such Data",CensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
        }
-       Comparator<IndiaCensusDAO>censusComparator=Comparator.comparing(census->census.state);
-       this.sort(censusComparator);
+       Comparator<IndiaCensusDAO> censusComparator = Comparator.comparing(census -> census.state);
+       this.sort(this.sortByField(field));
        String sortedStateCensusJson=new Gson().toJson(censusList);
        return sortedStateCensusJson;
     }
@@ -92,5 +92,30 @@ public class CensusAnalyser {
     }
 
 
+public Comparator<IndiaCensusDAO> sortByField(String field) throws CensusAnalyserException {
+    Comparator<IndiaCensusDAO>censusComparator;
+
+  switch(field.toLowerCase()) {
+      case "state":
+          censusComparator = Comparator.comparing(census -> census.state);
+          break;
+
+      case "population":
+          censusComparator = Comparator.comparing(census -> census.population);
+          break;
+
+      case "areaInSqKm":
+          censusComparator = Comparator.comparing(census -> census.areaInSqKm);
+          break;
+
+      case "densityPerSqKm":
+          censusComparator = Comparator.comparing(census -> census.densityPerSqKm);
+          break;
+
+      default:
+          throw new IllegalStateException("enter proper field" +field.toLowerCase());
+  }
+return censusComparator;
+}
 
 }
