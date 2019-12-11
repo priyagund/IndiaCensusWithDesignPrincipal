@@ -24,6 +24,7 @@ public class CensusAnalyser {
     }
 
     public int loadIndiaCensusData(String csvFilePath) throws CensusAnalyserException {
+
         try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));)
         {
             ICSVBuilder icsvBuilder= CSVBuilderFactory.createCSVBuilder();
@@ -50,14 +51,14 @@ public class CensusAnalyser {
         {
             ICSVBuilder icsvBuilder=CSVBuilderFactory.createCSVBuilder();
             Iterator<IndiaStateCSV> stateIterator=icsvBuilder.getCSVFileIterator(reader,IndiaStateCSV.class);
+            int count=0;
              while(stateIterator.hasNext()) {
                  IndiaStateCSV stateCSV = stateIterator.next();
                  IndiaCensusDAO censusDAO = censusStateMap.get(stateCSV.getStateName());
                  if (censusDAO == null) continue;
                  censusDAO.stateCode = stateCSV.getStateCode();
              }
-
-            return censusStateMap.size();
+            return count;
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
@@ -67,14 +68,8 @@ public class CensusAnalyser {
     }
 
 
-    private <E> int getCount(Iterator<E>iterator){
-        Iterable<E>csvIterable=()->iterator;
-        int numOfEntries = (int) StreamSupport.stream(csvIterable.spliterator(), false).count();
-        return numOfEntries;
-    }
-
-
    public String getStateWiseSortedCensusData(String field) throws CensusAnalyserException {
+
        if(censusStateMap == null || censusStateMap.size()==0){
            throw new CensusAnalyserException("No such Data",CensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
        }
@@ -87,6 +82,7 @@ public class CensusAnalyser {
 
 
     private void sort(List<IndiaCensusDAO>censusDAOS, Comparator<IndiaCensusDAO> censusComparator){
+
         for(int i=0;i<censusDAOS.size()-1;i++){
             for(int j=0;j<censusDAOS.size()-i-1;j++){
                 IndiaCensusDAO census1=censusDAOS.get(j);
