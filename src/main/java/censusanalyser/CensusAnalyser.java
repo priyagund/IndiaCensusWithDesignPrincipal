@@ -5,6 +5,7 @@ import csvbuilder.CSVBuilderException;
 import csvbuilder.CSVBuilderFactory;
 import csvbuilder.ICSVBuilder;
 
+import javax.xml.transform.stream.StreamSource;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -29,9 +30,8 @@ public class CensusAnalyser {
         {
             ICSVBuilder icsvBuilder= CSVBuilderFactory.createCSVBuilder();
             Iterator<IndiaCensusCSV> csvFileIterator=icsvBuilder.getCSVFileIterator(reader,IndiaCensusCSV.class);
-            while(csvFileIterator.hasNext()){
-                this.censusList.add(new IndiaCensusDAO(csvFileIterator.next()));
-            }
+            Iterable<IndiaCensusCSV>csvIterable=()->csvFileIterator;
+            StreamSupport.stream(csvIterable.spliterator(), false).forEach(censusCSV->censusList.add(new IndiaCensusDAO(censusCSV)));
             return censusList.size();
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
