@@ -42,7 +42,7 @@ public class CensusAnalyserTest {
             int numberStateCode = censusAnalyser.loadIndiaStateCode(INDIA_STATE_CODE);
             Assert.assertEquals(37, numberStateCode);
         } catch (CensusAnalyserException e) {
-            e.printStackTrace();
+
         }
 
     }
@@ -56,7 +56,7 @@ public class CensusAnalyserTest {
             IndiaCensusCSV[] censusCSV = new Gson().fromJson(sortedCensusData, IndiaCensusCSV[].class);
             Assert.assertEquals("Andhra Pradesh", censusCSV[0].state);
         } catch (CensusAnalyserException e) {
-            e.printStackTrace();
+
         }
 
     }
