@@ -95,30 +95,7 @@ public class CensusAnalyser {
     }
 
 
-public Comparator<IndiaCensusDAO> sortByField(String field) throws CensusAnalyserException {
-    Comparator<IndiaCensusDAO>censusComparator;
 
-  switch(field.toLowerCase()) {
-      case "state":
-          censusComparator = Comparator.comparing(census -> census.state);
-          break;
 
-      case "population":
-          censusComparator = Comparator.comparing(census -> census.population);
-          break;
-
-      case "areaInSqKm":
-          censusComparator = Comparator.comparing(census -> census.areaInSqKm);
-          break;
-
-      case "densityPerSqKm":
-          censusComparator = Comparator.comparing(census -> census.densityPerSqKm);
-          break;
-
-      default:
-          throw new IllegalStateException("enter proper field" +field.toLowerCase());
-  }
-return censusComparator;
-}
 
 }
