@@ -11,12 +11,12 @@ public class CensusAnalyserTest {
     private static final String WRONG_CSV_FILE_PATH = "./src/main/resources/IndiaStateCensusData.csv";
     private static final String INDIA_STATE_CODE = "/home/admin165/Downloads/CensusAnalyser(2)/CensusAnalyser/src/test/resources/IndiaStateCode.csv";
     private static final String WRONG_CSV_FILE_TYPE = "./src/test/resources/IndiaStateCensusData.json";
-    private static final String US_CENSUS_DATA_FILE="";
+    private static final String US_CENSUS_DATA_FILE="/home/admin165/Downloads/CensusAnalyser(2)/CensusAnalyser/src/test/resources/USCensusData.csv";
     @Test
     public void givenIndianCensusCSVFileReturnsCorrectRecords() {
         try {
             CensusAnalyser censusAnalyser = new CensusAnalyser();
-            int numOfRecords = censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
+            int numOfRecords = censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH,INDIA_STATE_CODE);
             Assert.assertEquals(29, numOfRecords);
         } catch (CensusAnalyserException e) {
 
@@ -39,9 +39,7 @@ public class CensusAnalyserTest {
     public void giveIndianSateCsv_shouldReturnExactCount() {
         CensusAnalyser censusAnalyser = new CensusAnalyser();
         try {
-            censusAnalyser.loadIndiaCensusData(INDIA_STATE_CODE);
-            int numberStateCode = censusAnalyser.loadIndiaStateCode(INDIA_STATE_CODE);
-
+            int numberStateCode = censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH,INDIA_STATE_CODE);
             Assert.assertEquals(37, numberStateCode);
         } catch (CensusAnalyserException e) {
 
@@ -187,7 +185,7 @@ public class CensusAnalyserTest {
         }
     }
 
-    @Test
+   @Test
     public void givenIndiaStateData_withIncorrectHeader_shouldThrowException() {
         CensusAnalyser censusAnalyser = new CensusAnalyser();
         try {
@@ -210,11 +208,10 @@ public class CensusAnalyserTest {
     }
 
     @Test
-    public void givenUSCesusData_withWrongeFile_shouldThrowmException(){
+    public void givenUSCesusData_withWrongeFile_shouldThrowException(){
         CensusAnalyser censusAnalyser=new CensusAnalyser();
-        int censusDataCount= 0;
         try {
-            censusDataCount = censusAnalyser.loadUScensusData(US_CENSUS_DATA_FILE);
+           int censusDataCount = censusAnalyser.loadUScensusData(US_CENSUS_DATA_FILE);
             Assert.assertEquals(51,censusDataCount);
         } catch (CensusAnalyserException e) {
 
