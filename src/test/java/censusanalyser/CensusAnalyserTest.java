@@ -12,16 +12,6 @@ public class CensusAnalyserTest {
     private static final String INDIA_STATE_CODE = "/home/admin165/Downloads/CensusAnalyser(2)/CensusAnalyser/src/test/resources/IndiaStateCode.csv";
     private static final String WRONG_CSV_FILE_TYPE = "./src/test/resources/IndiaStateCensusData.json";
     private static final String US_CENSUS_DATA_FILE="/home/admin165/Downloads/CensusAnalyser(2)/CensusAnalyser/src/test/resources/USCensusData.csv";
-    @Test
-    public void givenIndianCensusCSVFileReturnsCorrectRecords() {
-        try {
-            CensusAnalyser censusAnalyser = new CensusAnalyser();
-            int numOfRecords = censusAnalyser.loadCensusData(CensusAnalyser.Country.INDIA,INDIA_CENSUS_CSV_FILE_PATH,INDIA_STATE_CODE);
-            Assert.assertEquals(29, numOfRecords);
-        } catch (CensusAnalyserException e) {
-
-        }
-    }
 
     @Test
     public void givenIndiaCensusData_withWrongFile_shouldThrowException() {
@@ -57,50 +47,6 @@ public class CensusAnalyserTest {
             Assert.assertEquals("Andhra Pradesh", censusCSV[0].state);
         } catch (CensusAnalyserException e) {
 
-        }
-
-    }
-
-    @Test
-    public void givenIndiaStateCensusData_withWrongFileType_shouldThrowException() {
-        CensusAnalyser censusAnalyser = new CensusAnalyser();
-        ExpectedException exceptionRule = ExpectedException.none();
-        exceptionRule.expect(CensusAnalyserException.class);
-        try {
-            censusAnalyser.loadCensusData(CensusAnalyser.Country.INDIA,WRONG_CSV_FILE_TYPE);
-        } catch (CensusAnalyserException e) {
-            Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
-        }
-    }
-
-    @Test
-    public void givenIndiaStateCensusData_withIncorrectDelimiter_shouldThrowException() {
-        CensusAnalyser censusAnalyser = new CensusAnalyser();
-        try {
-            censusAnalyser.loadCensusData(CensusAnalyser.Country.INDIA,INDIA_CENSUS_CSV_FILE_PATH);
-        } catch (CensusAnalyserException e) {
-            Assert.assertEquals(CensusAnalyserException.ExceptionType.SOME_OTHER_ERROR_INFILE, e.type);
-        }
-
-    }
-
-    @Test
-    public void givenIndiaStateCensusData_withIncorrectHeader_shouldThrowException() {
-        CensusAnalyser censusAnalyser = new CensusAnalyser();
-        try {
-            censusAnalyser.loadCensusData(CensusAnalyser.Country.INDIA,INDIA_CENSUS_CSV_FILE_PATH);
-        } catch (CensusAnalyserException e) {
-            Assert.assertEquals(CensusAnalyserException.ExceptionType.SOME_OTHER_ERROR_INFILE, e.type);
-        }
-    }
-
-    @Test
-    public void givenIndiaStateCensusData_withEmptyFile_shouldReturnException() {
-        CensusAnalyser censusAnalyser = new CensusAnalyser();
-        try {
-            censusAnalyser.loadCensusData(CensusAnalyser.Country.INDIA,"");
-        } catch (CensusAnalyserException e) {
-            Assert.assertEquals(CensusAnalyserException.ExceptionType.SOME_OTHER_ERROR_INFILE, e.type);
         }
     }
 
@@ -185,37 +131,4 @@ public class CensusAnalyserTest {
         }
     }
 
-   @Test
-    public void givenIndiaStateData_withIncorrectHeader_shouldThrowException() {
-        CensusAnalyser censusAnalyser = new CensusAnalyser();
-        try {
-            censusAnalyser.loadIndiaStateCode(INDIA_STATE_CODE);
-        } catch (CensusAnalyserException e) {
-            Assert.assertEquals(CensusAnalyserException.ExceptionType.SOME_OTHER_ERROR_INFILE, e.type);
-        }
-    }
-
-    @Test
-    public void givenIndiaStateData_withWrongFile_shouldThrowException() {
-        try {
-            CensusAnalyser censusAnalyser = new CensusAnalyser();
-            ExpectedException exceptionRule = ExpectedException.none();
-            exceptionRule.expect(CensusAnalyserException.class);
-            censusAnalyser.loadIndiaStateCode(WRONG_CSV_FILE_PATH);
-        } catch (CensusAnalyserException e) {
-            Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
-        }
-    }
-
-    @Test
-    public void givenUSCesusData_withWrongeFile_shouldThrowException(){
-        CensusAnalyser censusAnalyser=new CensusAnalyser();
-        try {
-           int censusDataCount = censusAnalyser.loadCensusData(CensusAnalyser.Country.US,US_CENSUS_DATA_FILE);
-            Assert.assertEquals(51,censusDataCount);
-        } catch (CensusAnalyserException e) {
-
-        }
-
-    }
 }
