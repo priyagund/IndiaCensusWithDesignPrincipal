@@ -14,6 +14,9 @@ import java.util.stream.StreamSupport;
 
 
 public class CensusAnalyser {
+public enum Country{
+    INDIA,US
+}
 
     Map<String, CensusDAO> censusStateMap=null;
     HashMap<EnumField, Comparator<CensusDAO>> censusStateEnumMap=null;
@@ -27,15 +30,12 @@ public class CensusAnalyser {
         this.censusStateEnumMap.put(EnumField.DENSITY, Comparator.comparing(census ->census.populationDensity));
     }
 
-    public int loadIndiaCensusData(String... csvFilePath) throws CensusAnalyserException {
-      censusStateMap=new CensusLoader().loadCensusData(IndiaCensusCSV.class,csvFilePath);
+    public int loadCensusData(Country country,String... csvFilePath) throws CensusAnalyserException {
+      censusStateMap=new CensusLoader().loadCensusData(country,csvFilePath);
         return censusStateMap.size();
     }
 
-    public int loadUScensusData(String... usCensusDataFile) throws CensusAnalyserException {
-        censusStateMap=new CensusLoader().loadCensusData(IndiaCensusCSV.class,usCensusDataFile);
-        return censusStateMap.size();
-    }
+
 
    public String getSortedByField(EnumField fieldName) throws CensusAnalyserException {
        if(censusStateMap == null || censusStateMap.size()==0){
