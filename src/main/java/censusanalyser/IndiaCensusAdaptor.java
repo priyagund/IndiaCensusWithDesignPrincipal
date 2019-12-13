@@ -14,8 +14,10 @@ import java.util.stream.StreamSupport;
 public class IndiaCensusAdaptor extends CensusAdaptor{
 
     @Override
-    public <E> Map<String, CensusDAO> loadCensusData(String... csvFilePath) throws CensusAnalyserException {
+    public <E> Map<String, CensusDAO> loadCensusData(CensusAnalyser.Country country,String... csvFilePath) throws CensusAnalyserException {
         Map<String,CensusDAO> censusStateMap=super.loadCensusData(IndiaCensusCSV.class,csvFilePath[0]);
+        if(csvFilePath.length!=2)
+            throw new CensusAnalyserException(CensusAnalyserException.ExceptionType.WRONG_FILE_COUNT);
         this.loadIndiaStateCode(censusStateMap,csvFilePath[1]);
         return censusStateMap;
     }

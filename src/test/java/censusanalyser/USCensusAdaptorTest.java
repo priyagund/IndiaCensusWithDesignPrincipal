@@ -15,7 +15,7 @@ public class USCensusAdaptorTest
     {
         USCensusAdaptor usCensusAdaptor=new USCensusAdaptor();
         try {
-            Map<String, CensusDAO> noOfRecord = usCensusAdaptor.loadCensusData(US_FILE_PATH);
+            Map<String, CensusDAO> noOfRecord = usCensusAdaptor.loadCensusData(CensusAnalyser.Country.US,US_FILE_PATH);
             Assert.assertEquals(51,noOfRecord.size());
         } catch (CensusAnalyserException e) {
             e.printStackTrace();
@@ -27,7 +27,7 @@ public class USCensusAdaptorTest
         ExpectedException exceptionRule = ExpectedException.none();
         exceptionRule.expect(CensusAnalyserException.class);
         try {
-            usCensusAdaptor.loadCensusData(WRONG_FILE_PATH);
+            usCensusAdaptor.loadCensusData(CensusAnalyser.Country.US,WRONG_FILE_PATH);
         } catch (CensusAnalyserException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.SOME_OTHER_ERROR_INFILE, e.type);
         }
@@ -37,7 +37,7 @@ public class USCensusAdaptorTest
     public void givenIndiaStateCensusData_withEmptyFile_shouldReturnException() {
         USCensusAdaptor usCensusAdaptor=new USCensusAdaptor();
         try {
-            usCensusAdaptor.loadCensusData("US_FILE_PATH");
+            usCensusAdaptor.loadCensusData(CensusAnalyser.Country.US,US_FILE_PATH);
         } catch (CensusAnalyserException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
         }
@@ -48,7 +48,7 @@ public class USCensusAdaptorTest
     public void givenIndiaStateCensusData_withIncorrectHeader_shouldThrowException() {
         try {
             USCensusAdaptor usCensusAdaptor=new USCensusAdaptor();
-            usCensusAdaptor.loadCensusData(US_FILE_PATH);
+            usCensusAdaptor.loadCensusData(CensusAnalyser.Country.US,US_FILE_PATH);
         } catch (CensusAnalyserException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.SOME_OTHER_ERROR_INFILE, e.type);
         }
@@ -58,7 +58,7 @@ public class USCensusAdaptorTest
     public void givenIndiaStateCensusData_withIncorrectDelimiter_shouldThrowException() {
         try {
             USCensusAdaptor usCensusAdaptor = new USCensusAdaptor();
-            usCensusAdaptor.loadCensusData(US_FILE_PATH);
+            usCensusAdaptor.loadCensusData(CensusAnalyser.Country.US,US_FILE_PATH);
         } catch (CensusAnalyserException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.SOME_OTHER_ERROR_INFILE, e.type);
         }
