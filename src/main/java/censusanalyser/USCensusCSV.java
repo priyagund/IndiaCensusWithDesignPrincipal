@@ -21,4 +21,8 @@ public class USCensusCSV {
         this.totalArea = totalArea;
         this.populationDensity = populationDensity;
     }
+
+    public USCensusCSV() {
+
+    }
 }
