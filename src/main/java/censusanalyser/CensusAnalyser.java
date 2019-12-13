@@ -1,10 +1,8 @@
 package censusanalyser;
 
 import com.google.gson.Gson;
-
 import java.util.*;
 import java.util.stream.Collectors;
-
 
 public class CensusAnalyser {
     public enum Country {
@@ -13,6 +11,7 @@ public class CensusAnalyser {
 
     Map<String, CensusDAO> censusStateMap = new HashMap<>();
     HashMap<EnumField, Comparator<CensusDAO>> censusStateEnumMap = new HashMap<>();
+
     private Country country;
 
     public CensusAnalyser(Country country) {
@@ -23,11 +22,15 @@ public class CensusAnalyser {
         this.censusStateEnumMap.put(EnumField.POPULATION, Comparator.comparing(census -> census.population));
         this.censusStateEnumMap.put(EnumField.AREA, Comparator.comparing(census -> census.totalArea));
         this.censusStateEnumMap.put(EnumField.DENSITY, Comparator.comparing(census -> census.populationDensity));
+        Comparator<CensusDAO> populationComparator = Comparator.comparing(census -> census.population);
+        Comparator<CensusDAO> densityComparator = Comparator.comparing(census -> census.populationDensity);
+        Comparator<CensusDAO> populusStateWithDensityComparator = populationComparator.thenComparing(densityComparator);
+        this.censusStateEnumMap.put(EnumField.POPULUSSTATEWITHDENSITY, populusStateWithDensityComparator);
     }
 
     public int loadCensusData(String... csvFilePath) throws CensusAnalyserException {
         CensusAdaptor censusAdaptor = CensusAdaptorFactory.getCensusData(country);
-        censusStateMap = censusAdaptor.loadCensusData(country,csvFilePath);
+        censusStateMap = censusAdaptor.loadCensusData(country, csvFilePath);
         return censusStateMap.size();
     }
 

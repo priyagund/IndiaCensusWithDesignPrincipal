@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="censusanalyser.CensusAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-12-13T10:24:34" hostname="admin165-desktop" time="0.182">
+<testsuite name="censusanalyser.CensusAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-12-13T13:40:55" hostname="admin165-desktop" time="0.182">
   <properties/>
-  <testcase name="givenUSStateCensusData_whenSortedDensityByDecending_shouldReturnResult" classname="censusanalyser.CensusAnalyserTest" time="0.182"/>
+  <testcase name="givenUSStateCensusData_WhenSortedOnPopulationWithDensityByDecending_shouldeReturnResult" classname="censusanalyser.CensusAnalyserTest" time="0.182"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
