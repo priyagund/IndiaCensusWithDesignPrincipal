@@ -13,17 +13,6 @@ public class CensusAnalyserTest {
     private static final String WRONG_CSV_FILE_TYPE = "./src/test/resources/IndiaStateCensusData.json";
     private static final String US_CENSUS_DATA_FILE="/home/admin165/Downloads/CensusAnalyser(2)/CensusAnalyser/src/test/resources/USCensusData.csv";
 
-    @Test
-    public void givenIndiaCensusData_withWrongFile_shouldThrowException() {
-        try {
-            CensusAnalyser censusAnalyser = new CensusAnalyser();
-            ExpectedException exceptionRule = ExpectedException.none();
-            exceptionRule.expect(CensusAnalyserException.class);
-            censusAnalyser.loadCensusData(CensusAnalyser.Country.INDIA,WRONG_CSV_FILE_PATH);
-        } catch (CensusAnalyserException e) {
-            Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
-        }
-    }
 
     @Test
     public void giveIndianSateCsv_shouldReturnExactCount() {
@@ -34,7 +23,6 @@ public class CensusAnalyserTest {
         } catch (CensusAnalyserException e) {
 
         }
-
     }
 
     @Test
@@ -130,5 +118,4 @@ public class CensusAnalyserTest {
             e.printStackTrace();
         }
     }
-
 }

@@ -4,11 +4,11 @@ import java.util.Map;
 
 public class CensusAdaptorFactory {
 
-    public static Map<String, CensusDAO> getCensusData(CensusAnalyser.Country country, String[] csvFilePath) throws CensusAnalyserException {
+    public static CensusAdaptor getCensusData(CensusAnalyser.Country country) throws CensusAnalyserException {
         if(country.equals(CensusAnalyser.Country.INDIA))
-            return new IndiaCensusAdaptor().loadCensusData(csvFilePath);
+            return new IndiaCensusAdaptor();
         if(country.equals(CensusAnalyser.Country.US))
-            return new USCensusAdaptor().loadCensusData(csvFilePath);
+            return new USCensusAdaptor();
         throw new CensusAnalyserException("unknownCountry",CensusAnalyserException.ExceptionType.INVALID_COUNTRY);
     }
 }

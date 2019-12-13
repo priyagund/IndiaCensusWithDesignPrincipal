@@ -10,8 +10,8 @@ public class CensusAnalyser {
 public enum Country{
     INDIA,US
 }
-    Map<String, CensusDAO> censusStateMap=null;
-    HashMap<EnumField, Comparator<CensusDAO>> censusStateEnumMap=null;
+    Map<String, CensusDAO> censusStateMap=new HashMap<>();
+    HashMap<EnumField, Comparator<CensusDAO>> censusStateEnumMap=new HashMap<>();
 
     public CensusAnalyser() {
         this.censusStateMap = new HashMap<>();
@@ -23,7 +23,8 @@ public enum Country{
     }
 
     public int loadCensusData(Country country,String... csvFilePath) throws CensusAnalyserException {
-      censusStateMap=CensusAdaptorFactory.getCensusData(country,csvFilePath);
+        CensusAdaptor censusAdaptor=CensusAdaptorFactory.getCensusData(country);
+        censusStateMap  = censusAdaptor.loadCensusData(csvFilePath);
         return censusStateMap.size();
     }
 

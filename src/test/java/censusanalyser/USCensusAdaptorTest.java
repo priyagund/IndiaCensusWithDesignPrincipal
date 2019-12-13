@@ -18,7 +18,7 @@ public class USCensusAdaptorTest
             Map<String, CensusDAO> noOfRecord = usCensusAdaptor.loadCensusData(US_FILE_PATH);
             Assert.assertEquals(51,noOfRecord.size());
         } catch (CensusAnalyserException e) {
-
+            e.printStackTrace();
         }
     }
     @Test
@@ -39,7 +39,7 @@ public class USCensusAdaptorTest
         try {
             usCensusAdaptor.loadCensusData("US_FILE_PATH");
         } catch (CensusAnalyserException e) {
-            Assert.assertEquals(CensusAnalyserException.ExceptionType.SOME_OTHER_ERROR_INFILE, e.type);
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
         }
     }
 
@@ -57,8 +57,8 @@ public class USCensusAdaptorTest
     @Test
     public void givenIndiaStateCensusData_withIncorrectDelimiter_shouldThrowException() {
         try {
-            IndiaCensusAdaptor indiaCensusAdaptor = new IndiaCensusAdaptor();
-            indiaCensusAdaptor.loadCensusData(US_FILE_PATH);
+            USCensusAdaptor usCensusAdaptor = new USCensusAdaptor();
+            usCensusAdaptor.loadCensusData(US_FILE_PATH);
         } catch (CensusAnalyserException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.SOME_OTHER_ERROR_INFILE, e.type);
         }

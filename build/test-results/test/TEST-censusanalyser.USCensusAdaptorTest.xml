@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="censusanalyser.USCensusAdaptorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-12-12T14:18:10" hostname="admin165-desktop" time="0.052">
-  <properties/>
-  <testcase name="givenIndiaStateCensusData_withIncorrectDelimiter_shouldThrowException" classname="censusanalyser.USCensusAdaptorTest" time="0.052"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

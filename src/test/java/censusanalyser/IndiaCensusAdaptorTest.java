@@ -17,9 +17,9 @@ public class IndiaCensusAdaptorTest
         try {
             IndiaCensusAdaptor indiaCensusAdaptor=new IndiaCensusAdaptor();
             Map<String, CensusDAO> numOfRecords = indiaCensusAdaptor.loadCensusData(INDIA_FILE_PATH);
-            Assert.assertEquals(29, numOfRecords.size());
+            Assert.assertEquals(27, numOfRecords.size());
         } catch (CensusAnalyserException e) {
-
+            e.printStackTrace();
         }
     }
 
