@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="censusanalyser.CensusAnalyserTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2019-12-13T10:02:11" hostname="admin165-desktop" time="0.217">
+<testsuite name="censusanalyser.CensusAnalyserTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2019-12-13T10:09:46" hostname="admin165-desktop" time="0.207">
   <properties/>
-  <testcase name="givenUSStateCensus_whenSortedOnState_shouldeReturnResult" classname="censusanalyser.CensusAnalyserTest" time="0.217">
-    <failure message="org.junit.ComparisonFailure: expected:&lt;[Florid]a&gt; but was:&lt;[Alabam]a&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: expected:&lt;[Florid]a&gt; but was:&lt;[Alabam]a&gt;
+  <testcase name="givenUSStateCensusData_WhenSortedOnPopulationByDecending_shouldeReturnResult" classname="censusanalyser.CensusAnalyserTest" time="0.207">
+    <failure message="org.junit.ComparisonFailure: expected:&lt;[Wyoming]&gt; but was:&lt;[California]&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: expected:&lt;[Wyoming]&gt; but was:&lt;[California]&gt;
 	at org.junit.Assert.assertEquals(Assert.java:115)
 	at org.junit.Assert.assertEquals(Assert.java:144)
-	at censusanalyser.CensusAnalyserTest.givenUSStateCensus_whenSortedOnState_shouldeReturnResult(CensusAnalyserTest.java:113)
+	at censusanalyser.CensusAnalyserTest.givenUSStateCensusData_WhenSortedOnPopulationByDecending_shouldeReturnResult(CensusAnalyserTest.java:139)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
