@@ -27,9 +27,9 @@ public class IndiaCensusAdaptorTest
     {
         try {
             IndiaCensusAdaptor indiaCensusAdaptor=new IndiaCensusAdaptor();
-            indiaCensusAdaptor.loadCensusData(CensusAnalyser.Country.INDIA,INDIA_STATE_CODE_FILE);
+            indiaCensusAdaptor.loadCensusData(CensusAnalyser.Country.INDIA,INDIA_FILE_PATH);
         } catch (CensusAnalyserException e) {
-            Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM,e.type);
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.WRONG_FILE_COUNT,e.type);
         }
     }
 

@@ -5,7 +5,8 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import java.util.Map;
 
-public class USCensusAdaptorTest
+public class
+USCensusAdaptorTest
 {
     private String US_FILE_PATH="/home/admin165/Downloads/CensusAnalyser(2)/CensusAnalyser/src/test/resources/USCensusData.csv";
     private String WRONG_FILE_PATH="/home/admin165/Downloads/CensusAnalyser(2)/CensusAnalyser/src/test/resources/IPL2019FactsheetMostRuns.csv";

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="censusanalyser.IndiaCensusAdaptorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-12-14T04:23:46" hostname="admin165-desktop" time="0.115">
+  <properties/>
+  <testcase name="givenPassingFile_ifInsufficientFilePass_throwException" classname="censusanalyser.IndiaCensusAdaptorTest" time="0.115"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
