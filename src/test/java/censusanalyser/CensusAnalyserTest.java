@@ -3,10 +3,6 @@ package censusanalyser;
 import com.google.gson.Gson;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
-
-import java.util.Comparator;
-import java.util.Map;
 
 public class CensusAnalyserTest {
 

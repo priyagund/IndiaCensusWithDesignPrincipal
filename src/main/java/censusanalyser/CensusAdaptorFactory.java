@@ -1,7 +1,5 @@
 package censusanalyser;
 
-import java.util.Map;
-
 public class CensusAdaptorFactory {
 
     public static CensusAdaptor getCensusData(CensusAnalyser.Country country) throws CensusAnalyserException {

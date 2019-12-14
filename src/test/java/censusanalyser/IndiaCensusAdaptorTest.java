@@ -3,7 +3,6 @@ package censusanalyser;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-
 import java.util.Map;
 
 public class IndiaCensusAdaptorTest
@@ -60,7 +59,7 @@ public class IndiaCensusAdaptorTest
     public void givenIndiaStateCensusData_withIncorrectHeader_shouldThrowException() {
         try {
             IndiaCensusAdaptor indiaCensusAdaptor = new IndiaCensusAdaptor();
-            indiaCensusAdaptor.loadCensusData(CensusAnalyser.Country.INDIA,INDIA_FILE_PATH);
+            indiaCensusAdaptor.loadCensusData(CensusAnalyser.Country.INDIA,INDIA_FILE_PATH,INDIA_STATE_CODE_FILE);
         } catch (CensusAnalyserException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.SOME_OTHER_ERROR_INFILE, e.type);
         }
@@ -70,7 +69,7 @@ public class IndiaCensusAdaptorTest
     public void givenIndiaStateCensusData_withIncorrectDelimiter_shouldThrowException() {
         try {
             IndiaCensusAdaptor indiaCensusAdaptor = new IndiaCensusAdaptor();
-            indiaCensusAdaptor.loadCensusData(CensusAnalyser.Country.INDIA,INDIA_FILE_PATH);
+            indiaCensusAdaptor.loadCensusData(CensusAnalyser.Country.INDIA,INDIA_FILE_PATH,INDIA_STATE_CODE_FILE);
         } catch (CensusAnalyserException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.SOME_OTHER_ERROR_INFILE, e.type);
         }
